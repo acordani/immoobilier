@@ -1,15 +1,7 @@
 Rails.application.routes.draw do
-  get 'profiles/index'
-
-  get 'profiles/show'
-
-  get 'profiles/new'
-
-  get 'profiles/create'
-
-  get 'profiles/edit'
-
-  get 'profiles/update'
+  resources :profiles, only: [:index, :new, :create, :show, :edit, :edite] do
+    resources :skills, only: [:create]
+  end
 
   resources :skills, only: [:index, :new, :create, :show, :edit, :update]
 

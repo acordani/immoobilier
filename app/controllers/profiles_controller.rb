@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit , :update]
+  before_action :authenticate_user!, except: [:show]
   def index
     @profiles = current_user.profiles
   end
@@ -17,7 +18,7 @@ class ProfilesController < ApplicationController
       redirect_to @profile, notice:"Saved..."
     else
       render :new
-  end
+    end
   end
 
   def edit
@@ -34,12 +35,12 @@ class ProfilesController < ApplicationController
 
   private
   def set_profile
-  @profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   def profile_params
-  params.require(:profile.permit(:city, :active, :title, :description)
-end
+    params.require(:profile).permit(:city, :active, :title, :description)
+  end
 
 
 end

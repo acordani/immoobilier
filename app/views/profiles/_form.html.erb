@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Create your profile
+  </div>
+  	<div class="panel-body">
+	    <div class="container">
+	    	<%= simple_form_for @profile do |f| %>
+		        <div class="row">
+		          <div class="col-md-4 select">
+		            <div class="form-group">
+		              <label>Entrer votre ville</label>
+		              <%= f.input :city, placeholder: "Votre ville" %>
+		            </div>
+		            <div class="form-group">
+		              <label>Entrer votre titre</label>
+		              <%= f.input :title, placeholder: "Votre titre" %>
+		            </div>
+		            <div class="form-group">
+		              <label>Entrer votre description</label>
+		              <%= f.input :description, placeholder: "Votre description" %>
+		            </div>
+		            <%= f.submit class: "btn btn-primary" %>
+		          </div>
+		        </div>
+	      	<% end %>
+	  	</div>
+	</div>
+</div>
+
+
