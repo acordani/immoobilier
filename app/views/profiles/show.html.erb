@@ -4,3 +4,6 @@
 <% @profile.skills.each do |f| %>
 	<%= f.name %>
 <% end %>
+<% if @profile.photo? %>
+  <%= cl_image_tag @profile.photo.path, width: 200, height: 300, crop: :fill %>
+<% end %>

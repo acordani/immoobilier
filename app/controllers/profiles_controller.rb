@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:city, :active, :title, :description, :experience, :skill_ids => [])
+    params.require(:profile).permit(:city, :active, :title, :description, :experience, :photo, :skill_ids => [])
   end
 
 

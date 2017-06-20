@@ -15,6 +15,9 @@
 		              <label>Titre de votre profil</label>
 		              <%= f.input :title, placeholder: "Negociateur Immobilier Confirmé", label:false %>
 		            </div>
+
+		            <%= f.input :photo, as: :attachinary %>
+		            
 		            <div class="form-group">
 		              <label>Decrivez-vous !</label>
 		              <%= f.input :description, placeholder: "Décrivez-vous le plus honetement possible.", label:false %>
