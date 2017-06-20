@@ -1,5 +1,8 @@
 <h1>Profiles#show</h1>
 <p>Find me in app/views/profiles/show.html.erb</p>
+<%= current_user.email %>
+<%= current_user.first_name %>
+<%= current_user.last_name %>
 <%= @profile.title %>
 <% @profile.skills.each do |f| %>
 	<%= f.name %>
