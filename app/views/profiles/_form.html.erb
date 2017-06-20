@@ -6,18 +6,48 @@
 	    <div class="container">
 	    	<%= simple_form_for @profile do |f| %>
 		        <div class="row">
-		          <div class="col-md-4 select">
+		          <div class="col-md-8  col-md-offset-2 select">
 		            <div class="form-group">
 		              <label>Entrer votre ville</label>
-		              <%= f.input :city, placeholder: "Votre ville" %>
+		              <%= f.input :city, placeholder: "Entrez la ville où vous exercez.", label:false %>
 		            </div>
 		            <div class="form-group">
-		              <label>Entrer votre titre</label>
-		              <%= f.input :title, placeholder: "Votre titre" %>
+		              <label>Titre de votre profil</label>
+		              <%= f.input :title, placeholder: "Negociateur Immobilier Confirmé", label:false %>
 		            </div>
 		            <div class="form-group">
-		              <label>Entrer votre description</label>
-		              <%= f.input :description, placeholder: "Votre description" %>
+		              <label>Decrivez-vous !</label>
+		              <%= f.input :description, placeholder: "Décrivez-vous le plus honetement possible.", label:false %>
+		            </div>
+					<%# On injecte les champs name de Skill en checkbox" %>
+		            <div>
+			            <%= f.label 'Selectionnez au moins 1 categorie' %>
+			            <div class="form-group">
+			            	<input type="hidden" name="profile[skill_ids][]" value="">
+			            	<div class="skill-choices">
+				            	<% Skill.all.order(name: :asc).each do |skill| %>
+				            	<!-- <div>
+				            		<%= check_box_tag "profile[skill_ids][]", skill.id %>
+				            		<%= skill.name %>
+				            	</div> --><!-- 
+				            	<%= check_box_tag "profile[skill_ids][]", skill.id %>
+	        					<%= skill.name %> -->
+	        						<input type="checkbox" name="profile[skill_ids][]" id="profile_skill_ids_<%= skill.id%>" class="hidden" value="<%=skill.id%>" />
+	        						<label class="skill-choice" for="profile_skill_ids_<%= skill.id %>">
+	        							<%= skill.name %>
+	        							<i class="fa fa-check"></i>
+
+	        						</label>
+				            	<!-- <input type="checkbox" name="profile[skill_ids][]" id="profile_skill_ids_" value="<%= skill.id %>" /> --><!-- 
+				            		<%= skill.name %> -->
+				        
+			            	
+			            		<% end %>
+							</div>
+			         	</div>
+			        <div class="form-group">
+		            	<label>Combien d'années d'experiences avez-vous ?</label>
+		            	<%= f.input :experience, placeholder: "5 ans", label:false %>
 		            </div>
 		            <%= f.submit class: "btn btn-primary" %>
 		          </div>
@@ -26,5 +56,3 @@
 	  	</div>
 	</div>
 </div>
-
-

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :profiles, only: [:index, :new, :create, :show, :edit, :edite] do
-    resources :skills, only: [:create]
+    resources :profile_skills, only: [:create]
   end
 
-  resources :skills, only: [:index, :new, :create, :show, :edit, :update]
+  
 
   devise_for :users
   root to: 'pages#home'

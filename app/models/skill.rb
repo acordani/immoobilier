@@ -1,9 +1,8 @@
 class Skill < ApplicationRecord
 
-	belongs_to :user
+	has_many :profile_skills
+	has_many :profiles, through: :profile_skills
 
-	LISTING_SKILL = ["Negociateur", "Photographe", "Home Stager", "Graphiste", "Distributeur"]
-
-	validates :listing_skill, presence: true, inclusion: { in: LISTING_SKILL }
+	
 	
 end

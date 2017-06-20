@@ -6,6 +6,7 @@ class SkillsController < ApplicationController
   end
 
   def show
+    @skill = Skill.find(params[:id])
     
   end
 
@@ -40,6 +41,6 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
-    params.require(:skill).permit(:listing_skill, :active)
+    params.require(:skill).permit(:name, :active)
   end
 end

@@ -9,11 +9,21 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = current_user.profiles.build
+    # @profile = current_user.profiles.build
+
+    @profile = Profile.new
+    @profile.user_id = current_user.id
+    @profile_skill = @profile.profile_skills.build
+
+
+
   end
 
   def create
-    @profile = current_user.profiles.build(profile_params)
+    
+    @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
+    
     if @profile.save
       redirect_to @profile, notice:"Saved..."
     else
@@ -39,7 +49,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:city, :active, :title, :description)
+    params.require(:profile).permit(:city, :active, :title, :description, :experience, :skill_ids => [])
   end
 
 
